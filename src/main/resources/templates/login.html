@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="fragments/header :: header">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title th:text="#{application_name}">Japan Finance</title>
+  
+  <!-- Main style sheet -->
+  <link href="../../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" media="screen" />
+  
+  <!-- Bootstrap 3 -->
+  <link href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+  <link href="../../static/css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}" rel="stylesheet" media="screen" />
+</head>
+
+<head>
+    <title>Login page</title>
+    <link href="../../static/core/css/signin.css' />" th:href="@{/core/css/signin.css}" rel="stylesheet"></link>
+</head>
+
+<body>
+    <div class="container">
+
+      <form th:action="@{/login}" method="post" class="form-signin">
+          <div th:if="${param.error != null}"
+            class="alert alert-danger">
+            <p>Invalid username and password.</p>
+          </div>
+          <div th:if="${param.logout != null}"
+            class="alert alert-success">
+            <p>You have been logged out successfully.</p>
+          </div>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="required" autofocus="autofocus">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+        <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+        <!-- TODO: Remember me
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+         -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
+
+</body>
+</html>

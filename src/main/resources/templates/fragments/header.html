@@ -4,9 +4,9 @@
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="header">
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="Steem 4 Kids" />
     <meta name="author" content="eastmaels@gmail.com" />
 
@@ -97,35 +97,28 @@
     <nav th:fragment="header_nav" class="navbar navbar-ct-green navbar-fixed-top" role="navigation">
       <div class="container">
           <ul class="nav nav-justified">
-            <sec:authorize access="isAuthenticated()">
-            <li>
+            <li sec:authorize="isAuthenticated()">
               <a th:href="@{ /dashboard }">
                 <i class="pe-7s-timer"></i>
               </a>
             </li>
-            </sec:authorize>
 
-            <sec:authorize access="isAuthenticated() and hasAnyRole( 
+            <li sec:authorize="isAuthenticated() and hasAnyRole( 
               'ROLE_LOCALE_TREASURER', 'ROLE_LOCALE_AUDITOR','ROLE_LOCALE_COORDINATOR', 'ROLE_GROUP_SERVANT',
               'ROLE_NATIONAL_COORDINATOR', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT')">
-            <li>
               <a th:href="@{ /reports }">
                 <i class="pe-7s-note2" style="color: white;"></i>
               </a>
             </li>
-            </sec:authorize>
 
-            <sec:authorize access="isAuthenticated() and hasAnyRole('ROLE_ADMIN', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT'
+            <li sec:authorize="isAuthenticated() and hasAnyRole('ROLE_ADMIN', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT'
               ,'ROLE_LOCALE_COORDINATOR','ROLE_GROUP_SERVANT')">
-            <li>
               <a th:href="@{ /admin }">
                 <i class="pe-7s-config" style="color: white;"></i>
               </a>
             </li>
-            </sec:authorize>
 
-            <sec:authorize access="isAuthenticated()">
-            <li class="dropdown noFocusBkg">
+            <li sec:authorize="isAuthenticated()" class="dropdown noFocusBkg">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="pe-7s-user"></i> <span class="caret"></span>
               </a>
@@ -139,14 +132,11 @@
                 </li>
               </ul>
             </li>
-            </sec:authorize>
-            <sec:authorize access="isAnonymous()">
-            <li class="dropdown">
+            <li sec:authorize="isAnonymous()" class="dropdown">
               <a th:href="@{/login}">
                 Login
               </a>
             </li>
-            </sec:authorize>
           </ul>
       </div>
     </nav>
