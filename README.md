@@ -1,6 +1,6 @@
-## STEEM 4 Kids
+## STEEM Goal Setter
 
-This application aims to reward kids. It uses Spring Boot + MongoDB + Heroku. 
+This aims to be an application for Steemians who are goal-oriented. It also aims to be the first open-source Java-based web application that will interact with the STEEM blockchain.
 
 Base codes came from https://github.com/chris-bailey/dev-bookshelf-mongodb-heroku.
 
