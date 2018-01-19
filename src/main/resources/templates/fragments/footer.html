@@ -38,10 +38,11 @@
             </li>
           </ul>
 
-          <ul th:sec:authorize="hasAnyRole('ROLE_ADMIN')"
+          <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
             class="nav nav-justified">
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/commitment/project}">
+              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/commitment/project}"
+                style="display:none">
                 <i class="pe-7s-target" style="color: white;"></i>
               </a>
             </li>
@@ -49,7 +50,8 @@
           <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
             class="nav nav-justified">
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/project_book}">
+              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/project_book}"
+                style="display:none">
                 <i class="pe-7s-target" style="color: white;"></i>
               </a>
             </li>
