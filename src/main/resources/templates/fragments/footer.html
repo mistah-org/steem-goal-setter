@@ -17,7 +17,8 @@
           <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
             class="nav nav-justified">
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/new}">
+              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/new}"
+                style="display:none">
                 <i class="pe-7s-piggy" style="color: white;"></i>
               </a>
             </li>
@@ -30,7 +31,8 @@
             </li>
              -->
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/expense/new}">
+              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/expense/new}"
+                style="display:none">
                 <i class="pe-7s-cash" style="color: white;"></i>
               </a>
             </li>
