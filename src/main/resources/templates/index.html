@@ -84,9 +84,9 @@
     <div sec:authorize="hasRole('ROLE_ADMIN')"
       class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
       <div class="div-square">
-        <a href="@{/locale_store_form}">
-          <i class="pe-7s-shopbag pe-3x pe-va pe-fw"></i>
-          <h4>Forms</h4>
+        <a th:href="@{/#}">
+          <i class="pe-7s-note pe-3x pe-va pe-fw"></i>
+          <h4>Posts</h4>
         </a>
       </div>
     </div>
@@ -94,9 +94,9 @@
     <div sec:authorize="hasRole('ROLE_ADMIN')"
       class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
       <div class="div-square">
-        <a href="@{/admin/role_product}">
-          <i class="pe-7s-look pe-3x pe-va pe-fw"></i>
-          <h4>Viewable Products</h4>
+        <a th:href="@{/#}">
+          <i class="pe-7s-comment pe-3x pe-va pe-fw"></i>
+          <h4>Comments</h4>
         </a>
       </div>
     </div>
