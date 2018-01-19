@@ -8,8 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mistah.steem4kids.Application;
-import org.mistah.steem4kids.controller.SigninController;
+import org.mistah.steemtracker.Application;
+import org.mistah.steemtracker.controller.SigninController;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
