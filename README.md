@@ -2,6 +2,8 @@
 
 This aims to be an application for Steemians who are goal-oriented. It also aims to be the first open-source Java-based web application that will interact with the STEEM blockchain.
 
+This also aims to use the [Steem Java API](https://github.com/marvin-we/steem-java-api-wrapper) wrapper by @dez1337.
+
 Base codes came from https://github.com/chris-bailey/dev-bookshelf-mongodb-heroku.
 
 ### Technology Stack
