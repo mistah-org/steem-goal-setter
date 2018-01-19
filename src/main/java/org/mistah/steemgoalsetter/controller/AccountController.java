@@ -2,7 +2,6 @@ package org.mistah.steemgoalsetter.controller;
 
 import javax.inject.Inject;
 
-import org.mistah.steemgoalsetter.domain.Book;
 import org.mistah.steemgoalsetter.service.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +30,8 @@ public class AccountController {
     public String show(@PathVariable("username") String username, Model model) {
         logger.info("Username: " + username);
 
-        Book book = bookService.findById(id);
-        model.addAttribute("book", book);
+//        Book book = bookService.findById(id);
+//        model.addAttribute("book", book);
 
         return "books/show";
     }
