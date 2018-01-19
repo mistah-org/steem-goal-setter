@@ -6,4 +6,4 @@ spring:
         active: prod
     data:
         mongodb:
-            database: mongolab-shaped-32472
+            database: heroku_hwvdwmkm
