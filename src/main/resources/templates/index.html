@@ -101,6 +101,15 @@
       </div>
     </div>
 
+    <div sec:authorize="hasRole('ROLE_ADMIN')"
+      class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <div class="div-square">
+        <a th:href="@{/#}">
+          <i class="pe-7s-chat pe-3x pe-va pe-fw"></i>
+          <h4>Replies</h4>
+        </a>
+      </div>
+    </div>
   </div>
 
   <div class="row text-center pad-top">
