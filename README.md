@@ -62,7 +62,7 @@ Retrieve your MongoDB database name by clicking on the MongoLab addon.  Place th
 
 Create a new collection by clicking on the MongoLab addon.
 Click on the `Add collection` button.
-Create a collection named `T_BOOK`.
+Create an arbitrary collection (e.g., `POST`).
 
 Deploy project to Heroku.
 ```
@@ -78,3 +78,11 @@ If your application deploys without timing out then open it as follows.
 ```
 $ heroku open
 ```
+
+### Bugs and Feedback
+For bugs or feature requests please create a [GitHub Issue](https://github.com/mistah-org/steem-goal-setter/issues).
+
+For general discussions or questions you can also:
+
+* Post your questions in [SteemDev's Discord Java Channel](https://discord.gg/HexEjeK)
+* Contact me on steemit.chat
