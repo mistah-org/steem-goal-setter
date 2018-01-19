@@ -1,4 +1,4 @@
-package org.mistah.steemtracker.web.util;
+package org.mistah.steemgoalsetter.web.util;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Before;

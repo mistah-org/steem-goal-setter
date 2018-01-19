@@ -18,7 +18,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import com.mongodb.Mongo;
 
 @Configuration
-@EnableMongoRepositories("org.mistah.steemtracker.repository")
+@EnableMongoRepositories("org.mistah.steemgoalsetter.repository")
 @Import(value = MongoAutoConfiguration.class)
 public class DatabaseConfiguration extends AbstractMongoConfiguration  {
 

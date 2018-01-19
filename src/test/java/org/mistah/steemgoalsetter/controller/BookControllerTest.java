@@ -1,4 +1,4 @@
-package org.mistah.steemtracker.controller;
+package org.mistah.steemgoalsetter.controller;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;

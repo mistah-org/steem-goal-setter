@@ -11,8 +11,8 @@
     <root level="DEBUG">
         <appender-ref ref="CONSOLE"/>
     </root>
-    
-    <logger name="org.mistah.steemtracker" level="DEBUG"/>
+
+    <logger name="org.mistah.steemgoalsetter" level="DEBUG"/>
 
     <logger name="javax.activation" level="WARN"/>
     <logger name="javax.mail" level="WARN"/>

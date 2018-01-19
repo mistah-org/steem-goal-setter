@@ -1,4 +1,4 @@
-package org.mistah.steemtracker.service;
+package org.mistah.steemgoalsetter.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
