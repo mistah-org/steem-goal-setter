@@ -34,7 +34,7 @@ public class HomeController {
     static {
         List<String[]> systemUsers = new ArrayList<String[]>();
         //*
-        systemUsers.add(new String[] {"eastmael", "East", "Mael", "1234", "ROLE_LSC"});
+        systemUsers.add(new String[] {"eastmael", "East", "Mael", "1234", "ROLE_ADMIN"});
         /* */
         USERS_LIST.addAll(systemUsers);
     }
@@ -74,21 +74,12 @@ public class HomeController {
         List<Role> roles = roleRepo.findAll();
         if (roles == null || roles.isEmpty()) {
             roles.add(roleRepo.save(new Role("ROLE_ADMIN", "Admin")));
-            roles.add(roleRepo.save(new Role("ROLE_FOC", "Founder's Club")));
-            roles.add(roleRepo.save(new Role("ROLE_MCO", "MiSTAH Core")));
-            roles.add(roleRepo.save(new Role("ROLE_1MC", "1 Million Core")));
-            roles.add(roleRepo.save(new Role("ROLE_KNP", "KNP")));
-            roles.add(roleRepo.save(new Role("ROLE_DCO", "District Coordinator")));
-            roles.add(roleRepo.save(new Role("ROLE_RET", "Retailer")));
-            roles.add(roleRepo.save(new Role("ROLE_APR", "Apprentice")));
-            roles.add(roleRepo.save(new Role("ROLE_LSC", "Locale Store Coordinator")));
-            roles.add(roleRepo.save(new Role("ROLE_PRC", "Preferred Customer")));
         }
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home() {
-        return "home";
+        return "index";
     }
 
 }

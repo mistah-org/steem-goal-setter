@@ -33,7 +33,7 @@ public class AccountController {
 //        Book book = bookService.findById(id);
 //        model.addAttribute("book", book);
 
-        return "books/show";
+        return "acount/index";
     }
 
 }
