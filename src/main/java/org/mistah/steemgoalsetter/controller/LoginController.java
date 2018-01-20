@@ -1,4 +1,4 @@
-package org.mistah.steemgoalsetter.web;
+package org.mistah.steemgoalsetter.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

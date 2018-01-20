@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class AccountController {
+public class SteemPowerController {
 
-    final Logger logger = LoggerFactory.getLogger(AccountController.class);
+    final Logger logger = LoggerFactory.getLogger(SteemPowerController.class);
 
     @Inject
     private BookService bookService;
@@ -26,12 +26,14 @@ public class AccountController {
     /**
      * Retrieve the book with the specified id.
      */
-    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{username}/steempower", method = RequestMethod.GET)
     public String show(@PathVariable("username") String username, Model model) {
         logger.info("Username: " + username);
-        model.addAttribute("username", username);
 
-        return "account/index";
+//        Book book = bookService.findById(id);
+//        model.addAttribute("book", book);
+
+        return "account/steempower/index";
     }
 
 }
