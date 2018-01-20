@@ -45,7 +45,7 @@ public class HomeController {
         createRoles();
         createAdmin();
         createUsers();
-        return "index";
+        return "home";
     }
 
     private void createUsers() {
@@ -79,7 +79,7 @@ public class HomeController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home() {
-        return "index";
+        return "home";
     }
 
 }
