@@ -1,6 +1,8 @@
-## STEEM 4 Kids
+## STEEM Goal Setter
 
-This application aims to reward kids. It uses Spring Boot + MongoDB + Heroku. 
+This aims to be an application for Steemians who are goal-oriented. It also aims to be the first open-source Java-based web application that will interact with the STEEM blockchain.
+
+This also aims to use the [Steem Java API](https://github.com/marvin-we/steem-java-api-wrapper) wrapper by @dez1337.
 
 Base codes came from https://github.com/chris-bailey/dev-bookshelf-mongodb-heroku.
 
@@ -62,7 +64,7 @@ Retrieve your MongoDB database name by clicking on the MongoLab addon.  Place th
 
 Create a new collection by clicking on the MongoLab addon.
 Click on the `Add collection` button.
-Create a collection named `T_BOOK`.
+Create an arbitrary collection (e.g., `POST`).
 
 Deploy project to Heroku.
 ```
@@ -78,3 +80,11 @@ If your application deploys without timing out then open it as follows.
 ```
 $ heroku open
 ```
+
+### Bugs and Feedback
+For bugs or feature requests please create a [GitHub Issue](https://github.com/mistah-org/steem-goal-setter/issues).
+
+For general discussions or questions you can also:
+
+* Post your questions in [SteemDev's Discord Java Channel](https://discord.gg/HexEjeK)
+* Contact me on steemit.chat

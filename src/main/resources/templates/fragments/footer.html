@@ -14,10 +14,11 @@
 
     <nav th:fragment="footer" class="navbar navbar-ct-blue navbar-fixed-bottom" role="navigation">
       <div class="container">
-        <sec:authorize access="hasAnyRole('ROLE_LOCALE_TREASURER','ROLE_LOCALE_SECRETARY')">
-          <ul class="nav nav-justified">
+          <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+            class="nav nav-justified">
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/new}">
+              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/new}"
+                style="display:none">
                 <i class="pe-7s-piggy" style="color: white;"></i>
               </a>
             </li>
@@ -30,32 +31,31 @@
             </li>
              -->
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/expense/new}">
+              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/expense/new}"
+                style="display:none">
                 <i class="pe-7s-cash" style="color: white;"></i>
               </a>
             </li>
           </ul>
-        </sec:authorize>
-        
-        <sec:authorize access="hasAnyRole('ROLE_MEMBER')">
-          <ul class="nav nav-justified">
+
+          <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+            class="nav nav-justified">
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/commitment/project}">
+              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/commitment/project}"
+                style="display:none">
                 <i class="pe-7s-target" style="color: white;"></i>
               </a>
             </li>
           </ul>
-        </sec:authorize>
-        
-        <sec:authorize access="hasAnyRole('ROLE_LOCALE_COORDINATOR')">
-          <ul class="nav nav-justified">
+          <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+            class="nav nav-justified">
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/project_book}">
+              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/project_book}"
+                style="display:none">
                 <i class="pe-7s-target" style="color: white;"></i>
               </a>
             </li>
           </ul>
-        </sec:authorize>
       </div><!-- /.container-fluid -->
     </nav>
     <!--  end navbar -->

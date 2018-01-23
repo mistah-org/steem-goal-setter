@@ -96,48 +96,54 @@
     <!-- Fixed navbar -->
     <nav th:fragment="header_nav" class="navbar navbar-ct-green navbar-fixed-top" role="navigation">
       <div class="container">
-          <ul class="nav nav-justified">
-            <li sec:authorize="isAuthenticated()">
-              <a th:href="@{ /dashboard }">
-                <i class="pe-7s-timer"></i>
-              </a>
-            </li>
+        <ul class="nav nav-justified">
+          <li>
+            <a th:href="@{/}">
+              <i class="pe-7s-home"></i>
+            </a>
+          </li>
 
-            <li sec:authorize="isAuthenticated() and hasAnyRole( 
-              'ROLE_LOCALE_TREASURER', 'ROLE_LOCALE_AUDITOR','ROLE_LOCALE_COORDINATOR', 'ROLE_GROUP_SERVANT',
-              'ROLE_NATIONAL_COORDINATOR', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT')">
-              <a th:href="@{ /reports }">
-                <i class="pe-7s-note2" style="color: white;"></i>
-              </a>
-            </li>
+          <li sec:authorize="isAuthenticated()">
+            <a th:href="@{ /dashboard }">
+              <i class="pe-7s-timer"></i>
+            </a>
+          </li>
 
-            <li sec:authorize="isAuthenticated() and hasAnyRole('ROLE_ADMIN', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT'
-              ,'ROLE_LOCALE_COORDINATOR','ROLE_GROUP_SERVANT')">
-              <a th:href="@{ /admin }">
-                <i class="pe-7s-config" style="color: white;"></i>
-              </a>
-            </li>
+          <li sec:authorize="isAuthenticated() and hasAnyRole( 
+            'ROLE_LOCALE_TREASURER', 'ROLE_LOCALE_AUDITOR','ROLE_LOCALE_COORDINATOR', 'ROLE_GROUP_SERVANT',
+            'ROLE_NATIONAL_COORDINATOR', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT')">
+            <a th:href="@{ /reports }">
+              <i class="pe-7s-note2" style="color: white;"></i>
+            </a>
+          </li>
 
-            <li sec:authorize="isAuthenticated()" class="dropdown noFocusBkg">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="pe-7s-user"></i> <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a th:href="@{ /logout }">Logout</a>
-                </li>
-                <li>
-                  <sec:authentication property="principal.user.username" var="userId" />
-                  <a th:href="@{/user/${userId}/profile}">Profile</a>
-                </li>
-              </ul>
-            </li>
-            <li sec:authorize="isAnonymous()" class="dropdown">
-              <a th:href="@{/login}">
-                Login
-              </a>
-            </li>
-          </ul>
+          <li sec:authorize="isAuthenticated() and hasAnyRole('ROLE_ADMIN', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT'
+            ,'ROLE_LOCALE_COORDINATOR','ROLE_GROUP_SERVANT')">
+            <a th:href="@{ /admin }">
+              <i class="pe-7s-config" style="color: white;"></i>
+            </a>
+          </li>
+
+          <li sec:authorize="isAuthenticated()" class="dropdown noFocusBkg">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <i class="pe-7s-user"></i> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a th:href="@{ /logout }">Logout</a>
+              </li>
+              <li>
+                <sec:authentication property="principal.user.username" var="userId" />
+                <a th:href="@{/user/${userId}/profile}">Profile</a>
+              </li>
+            </ul>
+          </li>
+          <li sec:authorize="isAnonymous()" class="dropdown">
+            <a th:href="@{/login}" style="display:none">
+              Login
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
     <div class="container-fluid" style="margin-top: 60px; margin-bottom: 60px;">
