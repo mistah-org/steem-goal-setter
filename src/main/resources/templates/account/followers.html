@@ -200,7 +200,8 @@
 
 </div>
 
-<script>
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
   Highcharts.chart('container', {
       chart: {
           zoomType: 'xy'
@@ -274,6 +275,7 @@
           }
       }]
   });
+/*]]>*/
 </script>
 
 <nav th:replace="fragments/footer :: footer">
