@@ -19,12 +19,14 @@
     <link href="../../static/core/css/ct-navbar.css" th:href="@{/core/css/ct-navbar.css}" rel="stylesheet" />
     <link href="../../static/core/css/pe-icon-7-stroke.css" th:href="@{/core/css/pe-icon-7-stroke.css}" rel="stylesheet" />
     <link href="../../static/core/css/helper.css" th:href="@{/core/css/helper.css}" rel="stylesheet" />
+    <link href="../../static/core/css/iThing.css" th:href="@{/core/css/iThing.css}" rel="stylesheet" />
 
     <script src="../../static/core/js/jquery-3.0.0.min.js" th:src="@{/core/js/jquery-3.0.0.min.js}"></script>
     <script src="../../static/core/js/jquery-migrate-3.0.0.min.js" th:src="@{/core/js/jquery-migrate-3.0.0.min.js}"></script>
     <script src="../../static/core/js/bootstrap.min.js" th:src="@{/core/js/bootstrap.min.js}"></script>
     <script src="../../static/core/js/jquery-ui.js" th:src="@{/core/js/jquery-ui.js}"></script>
     <script src="../../static/core/js/ct-navbar.js" th:src="@{/core/js/ct-navbar.js}"></script>
+    <script src="../../static/core/js/jQDateRangeSlider-min.js" th:src="@{/core/js/jQDateRangeSlider-min.js}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -103,24 +105,21 @@
             </a>
           </li>
 
-          <li sec:authorize="isAuthenticated()">
-            <a th:href="@{ /dashboard }">
-              <i class="pe-7s-timer"></i>
+          <li>
+            <a th:href="#">
+              <i class="pe-7s-gleam" style="color: white;"></i>
             </a>
           </li>
 
-          <li sec:authorize="isAuthenticated() and hasAnyRole( 
-            'ROLE_LOCALE_TREASURER', 'ROLE_LOCALE_AUDITOR','ROLE_LOCALE_COORDINATOR', 'ROLE_GROUP_SERVANT',
-            'ROLE_NATIONAL_COORDINATOR', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT')">
-            <a th:href="@{ /reports }">
-              <i class="pe-7s-note2" style="color: white;"></i>
+          <li>
+            <a th:href="#">
+              <i class="pe-7s-users" style="color: white;"></i>
             </a>
           </li>
 
-          <li sec:authorize="isAuthenticated() and hasAnyRole('ROLE_ADMIN', 'ROLE_DISTRICT_COORDINATOR', 'ROLE_DISTRICT_SERVANT'
-            ,'ROLE_LOCALE_COORDINATOR','ROLE_GROUP_SERVANT')">
-            <a th:href="@{ /admin }">
-              <i class="pe-7s-config" style="color: white;"></i>
+          <li style="display: none">
+            <a th:href="#">
+              <i class="pe-7s-glasses" style="color: white;"></i>
             </a>
           </li>
 
@@ -138,8 +137,8 @@
               </li>
             </ul>
           </li>
-          <li sec:authorize="isAnonymous()" class="dropdown">
-            <a th:href="@{/login}" style="display:none">
+          <li sec:authorize="isAnonymous()" class="dropdown"  style="display: none">
+            <a th:href="@{/login}">
               Login
             </a>
           </li>

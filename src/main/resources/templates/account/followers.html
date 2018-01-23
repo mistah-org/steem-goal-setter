@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="fragments/header :: header">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title th:text="#{application_name}">Japan Finance</title>
+  
+    <!-- Bootstrap 3 -->
+    <link href="../../static/core/css/bootstrap.min.css" th:href="@{/core/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../static/core/css/navbar-fixed-top.css" th:href="@{/core/css/navbar-fixed-top.css}" rel="stylesheet" />
+    <link href="../../static/core/css/jquery-ui.css" th:href="@{/core/css/jquery-ui.css}" rel="stylesheet" />
+    <link href="../../static/core/css/ct-navbar.css" th:href="@{/core/css/ct-navbar.css}" rel="stylesheet" />
+    <link href="../../static/core/css/pe-icon-7-stroke.css" th:href="@{/core/css/pe-icon-7-stroke.css}" rel="stylesheet" />
+    <link href="../../static/core/css/helper.css" th:href="@{/core/css/helper.css}" rel="stylesheet" />
+    <link href="../../static/core/css/iThing.css" th:href="@{/core/css/iThing.css}" rel="stylesheet" />
+
+    <script src="../../static/core/js/jquery-3.0.0.min.js" th:src="@{/core/js/jquery-3.0.0.min.js}"></script>
+    <script src="../../static/core/js/jquery-migrate-3.0.0.min.js" th:src="@{/core/js/jquery-migrate-3.0.0.min.js}"></script>
+    <script src="../../static/core/js/bootstrap.min.js" th:src="@{/core/js/bootstrap.min.js}"></script>
+    <script src="../../static/core/js/jquery-ui.js" th:src="@{/core/js/jquery-ui.js}"></script>
+    <script src="../../static/core/js/ct-navbar.js" th:src="@{/core/js/ct-navbar.js}"></script>
+    <script src="../../static/core/js/jQDateRangeSlider-min.js" th:src="@{/core/js/jQDateRangeSlider-min.js}"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<style>
+	li.navbar-nav > a:hover, li.navbar-nav > a:focus {
+	    background-color: rgba(255, 255, 255, 0.2);
+	    border-radius: 4px;
+	    color: #ffffff;
+	    opacity: 1;
+	}
+	
+	.navbar.navbar-ct-blue {
+	  background: #1B96BF;
+	  border: 1px solid #1B96BF;
+	  max-height: 50px;
+	  line-height: 30px;
+	  margin: 0;
+	}
+	.navbar.navbar-ct-blue .nav-justified > li {
+	  display: table-cell;
+	  width: 1%
+	}
+	.navbar.navbar-ct-blue .nav-justified > li > a {
+	  color: white;
+	  font-size: 30px;
+	}
+	.navbar.navbar-ct-blue .nav-justified > li > a:hover {
+	  color: #00F2FF;
+	  background: none;
+	}
+	
+	.navbar.navbar-ct-green {
+	  background: #1B96BF;
+	  border: 1px solid #1B96BF;
+	  max-height: 50px;
+	  line-height: 30px;
+	  margin: 0;
+	}
+	.navbar.navbar-ct-green .nav-justified > li {
+	  display: table-cell;
+	  width: 1%
+	}
+	.navbar.navbar-ct-green .nav-justified > li > a {
+	  color: white;
+	  font-size: 30px;
+	}
+	.navbar.navbar-ct-green .nav-justified > li > a:hover {
+	  color: #00F2FF;
+	  background: none;
+	}
+	.table {
+	  margin-bottom: 60px;
+	}
+	
+	.noFocusBkg.open .dropdown-toggle:focus { /*** new class to prevent highlighting */
+	  background: transparent; /* or transparent or inherit */
+	}
+	
+	</style>
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav th:replace="fragments/header :: header_nav" >
+  <div class="container">
+    <ul class="nav nav-justified">
+      <li>
+        <a th:href="@{/}">
+          <i class="pe-7s-home"></i>
+        </a>
+      </li>
+
+      <li>
+        <a th:href="#">
+          <i class="pe-7s-gleam" style="color: white;"></i>
+        </a>
+      </li>
+
+      <li>
+        <a th:href="#">
+          <i class="pe-7s-users" style="color: white;"></i>
+        </a>
+      </li>
+
+      <li style="display: none">
+        <a th:href="#">
+          <i class="pe-7s-glasses" style="color: white;"></i>
+        </a>
+      </li>
+
+      <li sec:authorize="isAuthenticated()" class="dropdown noFocusBkg">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <i class="pe-7s-user"></i> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a th:href="@{ /logout }">Logout</a>
+          </li>
+          <li>
+            <sec:authentication property="principal.user.username" var="userId" />
+            <a th:href="@{/user/${userId}/profile}">Profile</a>
+          </li>
+        </ul>
+      </li>
+      <li sec:authorize="isAnonymous()" class="dropdown"  style="display: none">
+        <a th:href="@{/login}">
+          Login
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid" style="margin-top: 60px; margin-bottom: 60px;">
+  <div class="row text-center pad-top">
+    <div class="col-lg-12">
+        <h3>STEEM Goal Setter</h3>
+    </div>
+  </div>
+  <div class="row text-center pad-top">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12">
+      <div id="slider"></div>
+      <script>
+      //<!--
+        const now = new Date();
+        $("#slider").dateRangeSlider({
+          defaultValues:{
+            min: new Date(2016, 8, 28),
+            max: new Date(now.getFullYear(), now.getMonth(), now.getDate())
+          },
+          bounds:{
+            min: new Date(2016, 0, 1),
+            max: new Date(now.getFullYear()+1, 0, 31)
+          }
+        });
+      //-->
+      </script>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12">
+      <button type="button" class="btn btn-primary" id="update">Update</button>
+      <script>
+          $("#update").on("click", function() {
+              window.location = "/@" + $("#username").val();
+          })
+      </script>
+    </div>
+  </div>
+
+</div>
+
+
+<nav th:replace="fragments/footer :: footer">
+  <div class="container">
+    <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+      class="nav nav-justified">
+      <li class="navbar-nav">
+        <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/new}"
+          style="display:none">
+          <i class="pe-7s-piggy" style="color: white;"></i>
+        </a>
+      </li>
+      <!-- 
+      <li class="navbar-nav">
+        <spring:url value="/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/project/new" var="newUrl" />
+        <a href="${ newUrl }">
+          <i class="pe-7s-target" style="color: white;"></i>
+        </a>
+      </li>
+       -->
+      <li class="navbar-nav">
+        <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/expense/new}"
+          style="display:none">
+          <i class="pe-7s-cash" style="color: white;"></i>
+        </a>
+      </li>
+    </ul>
+
+    <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+      class="nav nav-justified">
+      <li class="navbar-nav">
+        <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/commitment/project}"
+          style="display:none">
+          <i class="pe-7s-target" style="color: white;"></i>
+        </a>
+      </li>
+    </ul>
+    <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+      class="nav nav-justified">
+      <li class="navbar-nav">
+        <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/project_book}"
+          style="display:none">
+          <i class="pe-7s-target" style="color: white;"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+ </body>
+</html>
