@@ -176,14 +176,33 @@
 
   <div class="row text-center">
     <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12">
-      <button type="button" class="btn btn-primary" id="update">Update</button>
-      <script th:inline="javascript">
-        /*<![CDATA[*/
-          $("#update").on("click", function() {
-              window.location = /*[[@{|/${username}/followers|}]]*/ "/@username";
-          })
-        /*]]>*/
-      </script>
+      <form id="dashboardForm" method="POST" class="form-horizontal"
+        th:action="@{|/${username}/followers|}">
+        <button type="button" class="btn btn-primary" id="update">Update</button>
+        <script th:inline="javascript">
+          /*<![CDATA[*/
+            $("#update").on("click", function() {
+              var dateValues = $("#slider").dateRangeSlider("values");
+              var startDate = dateValues.min.toISOString().split('T')[0];
+              var endDate = dateValues.max.toISOString().split('T')[0];
+
+              var startDateInput = $("<input>")
+                         .attr("type", "hidden")
+                         .attr("name", "startDate").val(startDate);
+              var endDateInput = $("<input>")
+                         .attr("type", "hidden")
+                         .attr("name", "endDate").val(endDate);
+              $('#dashboardForm').append(startDateInput);
+              $('#dashboardForm').append(endDateInput);
+              
+              console.log(startDateInput)
+              console.log(endDateInput)
+              
+              $("#dashboardForm").submit(); 
+            })
+          /*]]>*/
+        </script>
+      </form>
     </div>
   </div>
 
