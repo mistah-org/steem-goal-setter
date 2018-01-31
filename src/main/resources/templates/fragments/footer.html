@@ -14,26 +14,10 @@
 
     <nav th:fragment="footer" class="navbar navbar-ct-blue navbar-fixed-bottom" role="navigation">
       <div class="container">
-          <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
-            class="nav nav-justified">
+          <ul class="nav nav-justified">
             <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/new}"
-                style="display:none">
-                <i class="pe-7s-piggy" style="color: white;"></i>
-              </a>
-            </li>
-            <!-- 
-            <li class="navbar-nav">
-              <spring:url value="/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/project/new" var="newUrl" />
-              <a href="${ newUrl }">
-                <i class="pe-7s-target" style="color: white;"></i>
-              </a>
-            </li>
-             -->
-            <li class="navbar-nav">
-              <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/expense/new}"
-                style="display:none">
-                <i class="pe-7s-cash" style="color: white;"></i>
+              <a th:href="@{/}">
+                <i class="pe-7s-home"></i>
               </a>
             </li>
           </ul>
