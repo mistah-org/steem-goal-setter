@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="fragments/header :: header">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Steem 4 Kids" />
+    <meta name="author" content="eastmaels@gmail.com" />
+  
+    <!-- Bootstrap 3 -->
+    <link href="../../static/core/css/bootstrap.min.css" th:href="@{/core/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="../../static/core/css/navbar-fixed-top.css" th:href="@{/core/css/navbar-fixed-top.css}" rel="stylesheet" />
+    <link href="../../static/core/css/jquery-ui.css" th:href="@{/core/css/jquery-ui.css}" rel="stylesheet" />
+    <link href="../../static/core/css/ct-navbar.css" th:href="@{/core/css/ct-navbar.css}" rel="stylesheet" />
+    <link href="../../static/core/css/pe-icon-7-stroke.css" th:href="@{/core/css/pe-icon-7-stroke.css}" rel="stylesheet" />
+    <link href="../../static/core/css/helper.css" th:href="@{/core/css/helper.css}" rel="stylesheet" />
+    <link href="../../static/core/css/iThing.css" th:href="@{/core/css/iThing.css}" rel="stylesheet" />
+
+    <script src="../../static/core/js/jquery-3.0.0.min.js" th:src="@{/core/js/jquery-3.0.0.min.js}"></script>
+    <script src="../../static/core/js/jquery-migrate-3.0.0.min.js" th:src="@{/core/js/jquery-migrate-3.0.0.min.js}"></script>
+    <script src="../../static/core/js/bootstrap.min.js" th:src="@{/core/js/bootstrap.min.js}"></script>
+    <script src="../../static/core/js/jquery-ui.js" th:src="@{/core/js/jquery-ui.js}"></script>
+    <script src="../../static/core/js/ct-navbar.js" th:src="@{/core/js/ct-navbar.js}"></script>
+    <script src="../../static/core/js/jQDateRangeSlider-min.js" th:src="@{/core/js/jQDateRangeSlider-min.js}"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<style>
+	li.navbar-nav > a:hover, li.navbar-nav > a:focus {
+	    background-color: rgba(255, 255, 255, 0.2);
+	    border-radius: 4px;
+	    color: #ffffff;
+	    opacity: 1;
+	}
+	
+	.navbar.navbar-ct-blue {
+	  background: #1B96BF;
+	  border: 1px solid #1B96BF;
+	  max-height: 50px;
+	  line-height: 30px;
+	  margin: 0;
+	}
+	.navbar.navbar-ct-blue .nav-justified > li {
+	  display: table-cell;
+	  width: 1%
+	}
+	.navbar.navbar-ct-blue .nav-justified > li > a {
+	  color: white;
+	  font-size: 30px;
+	}
+	.navbar.navbar-ct-blue .nav-justified > li > a:hover {
+	  color: #00F2FF;
+	  background: none;
+	}
+	
+	.navbar.navbar-ct-green {
+	  background: #1B96BF;
+	  border: 1px solid #1B96BF;
+	  max-height: 50px;
+	  line-height: 30px;
+	  margin: 0;
+	}
+	.navbar.navbar-ct-green .nav-justified > li {
+	  display: table-cell;
+	  width: 1%
+	}
+	.navbar.navbar-ct-green .nav-justified > li > a {
+	  color: white;
+	  font-size: 30px;
+	}
+	.navbar.navbar-ct-green .nav-justified > li > a:hover {
+	  color: #00F2FF;
+	  background: none;
+	}
+	.table {
+	  margin-bottom: 60px;
+	}
+	
+	.noFocusBkg.open .dropdown-toggle:focus { /*** new class to prevent highlighting */
+	  background: transparent; /* or transparent or inherit */
+	}
+	
+	</style>
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<nav th:replace="fragments/header :: header_nav" class="navbar navbar-ct-green navbar-fixed-top" role="navigation">
+  <div class="container">
+    <ul class="nav nav-justified">
+      <li>
+        <a th:href="@{/}">
+          <i class="pe-7s-home"></i>
+        </a>
+      </li>
+
+      <li>
+        <a th:href="#">
+          <i class="pe-7s-gleam" style="color: white;"></i>
+        </a>
+      </li>
+
+      <li>
+        <a th:href="#">
+          <i class="pe-7s-users" style="color: white;"></i>
+        </a>
+      </li>
+
+      <li style="display: none">
+        <a th:href="#">
+          <i class="pe-7s-glasses" style="color: white;"></i>
+        </a>
+      </li>
+
+      <li sec:authorize="isAuthenticated()" class="dropdown noFocusBkg">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <i class="pe-7s-user"></i> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a th:href="@{ /logout }">Logout</a>
+          </li>
+          <li>
+            <sec:authentication property="principal.user.username" var="userId" />
+            <a th:href="@{/user/${userId}/profile}">Profile</a>
+          </li>
+        </ul>
+      </li>
+      <li sec:authorize="isAnonymous()" class="dropdown"  style="display: none">
+        <a th:href="@{/login}">
+          Login
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid" style="margin-top: 60px; margin-bottom: 60px;">
+  <div class="row text-center pad-top">
+    <div class="col-lg-12">
+      <div id="container"></div>
+    </div>
+  </div>
+  <div class="row text-center pad-top">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12">
+      <div id="slider"></div>
+      <script>
+      //<!--
+        const now = new Date();
+        $("#slider").dateRangeSlider({
+          defaultValues:{
+            min: new Date(2016, 8, 28),
+            max: new Date(now.getFullYear(), now.getMonth(), now.getDate())
+          },
+          bounds:{
+            min: new Date(2016, 0, 1),
+            max: new Date(now.getFullYear()+1, 0, 31)
+          }
+        });
+      //-->
+      </script>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12">
+      <form id="dashboardForm" method="POST" class="form-horizontal"
+        th:action="@{|/${username}/followers|}">
+        <button type="button" class="btn btn-primary" id="update">Update</button>
+        <script th:inline="javascript">
+          /*<![CDATA[*/
+            $("#update").on("click", function() {
+              var dateValues = $("#slider").dateRangeSlider("values");
+              var startDate = dateValues.min.toISOString().split('T')[0];
+              var endDate = dateValues.max.toISOString().split('T')[0];
+
+              var startDateInput = $("<input>")
+                         .attr("type", "hidden")
+                         .attr("name", "startDate").val(startDate);
+              var endDateInput = $("<input>")
+                         .attr("type", "hidden")
+                         .attr("name", "endDate").val(endDate);
+              $('#dashboardForm').append(startDateInput);
+              $('#dashboardForm').append(endDateInput);
+              
+              console.log(startDateInput)
+              console.log(endDateInput)
+              
+              $("#dashboardForm").submit(); 
+            })
+          /*]]>*/
+        </script>
+      </form>
+    </div>
+  </div>
+
+  <div class="row text-center pad-top">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12">
+      <div class="form-inline">
+          <label class="sr-only" for="targetFollowers">Target Followers</label>
+          <input type="text" class="form-control form-control-lg" placeholder="Target Followers" 
+              id="targetFollowers"/>
+              
+          <label class="sr-only" for="checkpoint">Checkpoint Date</label>
+          <input type="date" class="form-control form-control-lg" placeholder="Checkpoint Date" 
+              id="checkpoint"/>
+
+          <button type="button" class="btn btn-primary" id="go">Set</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+  Highcharts.chart('container', {
+      chart: {
+          zoomType: 'xy'
+      },
+      title: {
+          text: 'Average Monthly Temperature and Rainfall in Tokyo'
+      },
+      subtitle: {
+          text: 'Source: WorldClimate.com'
+      },
+      xAxis: [{
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          crosshair: true
+      }],
+      yAxis: [{ // Primary yAxis
+          labels: {
+              format: '{value}°C',
+              style: {
+                  color: Highcharts.getOptions().colors[1]
+              }
+          },
+          title: {
+              text: 'Temperature',
+              style: {
+                  color: Highcharts.getOptions().colors[1]
+              }
+          }
+      }, { // Secondary yAxis
+          title: {
+              text: 'Rainfall',
+              style: {
+                  color: Highcharts.getOptions().colors[0]
+              }
+          },
+          labels: {
+              format: '{value} mm',
+              style: {
+                  color: Highcharts.getOptions().colors[0]
+              }
+          },
+          opposite: true
+      }],
+      tooltip: {
+          shared: true
+      },
+      legend: {
+          layout: 'vertical',
+          align: 'left',
+          x: 120,
+          verticalAlign: 'top',
+          y: 100,
+          floating: true,
+          backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+      },
+      series: [{
+          name: 'Rainfall',
+          type: 'column',
+          yAxis: 1,
+          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+          tooltip: {
+              valueSuffix: ' mm'
+          }
+  
+      }, {
+          name: 'Temperature',
+          type: 'spline',
+          data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+          tooltip: {
+              valueSuffix: '°C'
+          }
+      }]
+  });
+/*]]>*/
+</script>
+
+<nav th:replace="fragments/footer :: footer" class="navbar navbar-ct-blue navbar-fixed-bottom" role="navigation">
+  <div class="container">
+    <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+      class="nav nav-justified">
+      <li class="navbar-nav">
+        <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/new}"
+          style="display:none">
+          <i class="pe-7s-piggy" style="color: white;"></i>
+        </a>
+      </li>
+      <!-- 
+      <li class="navbar-nav">
+        <spring:url value="/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/collection/project/new" var="newUrl" />
+        <a href="${ newUrl }">
+          <i class="pe-7s-target" style="color: white;"></i>
+        </a>
+      </li>
+       -->
+      <li class="navbar-nav">
+        <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/expense/new}"
+          style="display:none">
+          <i class="pe-7s-cash" style="color: white;"></i>
+        </a>
+      </li>
+    </ul>
+
+    <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+      class="nav nav-justified">
+      <li class="navbar-nav">
+        <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/commitment/project}"
+          style="display:none">
+          <i class="pe-7s-target" style="color: white;"></i>
+        </a>
+      </li>
+    </ul>
+    <ul th:sec:authorize="hasRole('ROLE_ADMIN')"
+      class="nav nav-justified">
+      <li class="navbar-nav">
+        <a th:href="@{/locale_account/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.user.locale}/project_book}"
+          style="display:none">
+          <i class="pe-7s-target" style="color: white;"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+ </body>
+</html>
