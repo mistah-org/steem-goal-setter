@@ -4,7 +4,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -25,7 +24,6 @@ import eu.bittrade.libs.steemj.SteemJ;
 import eu.bittrade.libs.steemj.base.models.AccountName;
 import eu.bittrade.libs.steemj.base.models.AppliedOperation;
 import eu.bittrade.libs.steemj.configuration.SteemJConfig;
-import eu.bittrade.libs.steemj.enums.PrivateKeyType;
 import eu.bittrade.libs.steemj.exceptions.SteemCommunicationException;
 import eu.bittrade.libs.steemj.exceptions.SteemResponseException;
 
@@ -64,34 +62,12 @@ public class PostsController {
 		logger.info("to: " + toDate);
 
 		SteemJConfig myConfig = SteemJConfig.getInstance();
-		myConfig.setDefaultAccount(new AccountName("steemj"));
-
-		// Add and manage private keys:
-        List<ImmutablePair<PrivateKeyType, String>> privateKeys = new ArrayList<>();
-        privateKeys.add(new ImmutablePair<>(PrivateKeyType.POSTING, "PRIVATE KEY"));
-        // ... add more keys if needed.
-
-        myConfig.getPrivateKeyStorage().addAccount(myConfig.getDefaultAccount(), privateKeys);
-
 		myConfig.setEndpointURIs(new ArrayList<Pair<URI, Boolean>>());
-
 		try {
 			ArrayList<Pair<URI, Boolean>> endpoints = new ArrayList<>();
-
 			ImmutablePair<URI, Boolean> webSocketEndpointZero = new ImmutablePair<>(new URI("https://api.steemit.com"),
 					true);
-			ImmutablePair<URI, Boolean> webSocketEndpointOne = new ImmutablePair<>(new URI("wss://steemd.steemit.com"),
-					true);
-			ImmutablePair<URI, Boolean> webSocketEndpointTwo = new ImmutablePair<>(new URI("wss://seed.bitcoiner.me"),
-					true);
-			ImmutablePair<URI, Boolean> webSocketEndpointThree = new ImmutablePair<>(
-					new URI("wss://steemd.minnowsupportproject.org"), true);
-
 			endpoints.add(webSocketEndpointZero);
-			endpoints.add(webSocketEndpointOne);
-			endpoints.add(webSocketEndpointTwo);
-			endpoints.add(webSocketEndpointThree);
-
 			myConfig.setEndpointURIs(endpoints);
 		} catch (URISyntaxException e) {
 			throw new RuntimeException("The given URI is not valid.", e);
@@ -99,10 +75,10 @@ public class PostsController {
 
 		SteemJ steemJ = new SteemJ();
 
-		Map<Integer, AppliedOperation> accountHistory = steemJ.getAccountHistory(new AccountName("steemj"), 0, 100);
+		Map<Integer, AppliedOperation> accountHistory = steemJ.getAccountHistory(new AccountName("nathalie13"), 0, 100);
 		for (Integer key : accountHistory.keySet()) {
 			AppliedOperation appliedOperation = accountHistory.get(key);
-			logger.info("{} made a {} operation.", "steemj", appliedOperation.getOp());
+			logger.info("{} made a {} operation.", "nathalie13", appliedOperation.getOp());
 		}
 
 		return "account/followers";
