@@ -1,6 +1,5 @@
 package org.mistah.steemgoalsetter;
 
-import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -27,14 +26,14 @@ public class Application {
      * Spring profiles can be configured with program arguments --spring.profiles.active=your-active-profile
      */
     @PostConstruct
-    public void initApplication() throws IOException {
+    public void initApplication() {
         if (env.getActiveProfiles().length == 0) {
             log.warn("No Spring profile configured, running with default configuration");
         } else {
             log.info("Running with Spring profile(s) : {}", Arrays.toString(env.getActiveProfiles()));
         }
     }
-                                                                                                                                                                         
+
     /**
      * Main method, used to run the application.
      */

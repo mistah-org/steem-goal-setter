@@ -1,15 +1,12 @@
 package org.mistah.steemgoalsetter.controller;
 
-import static org.junit.Assert.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mistah.steemgoalsetter.Application;
-import org.mistah.steemgoalsetter.controller.SigninController;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -36,6 +33,6 @@ public class SigninControllerTest {
 	public void testSignin() throws Exception {
 		mockMvc.perform(get("/signin"))
 			.andExpect(status().isOk())
-			.andExpect(forwardedUrl("signin/signin"));
+			.andExpect(forwardedUrl("signin/login"));
 	}
 }
