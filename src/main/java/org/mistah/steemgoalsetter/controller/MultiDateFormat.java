@@ -1,4 +1,4 @@
-package org.mistah.steemgoalsetter.web;
+package org.mistah.steemgoalsetter.controller;
 
 import java.text.DateFormat;
 import java.text.FieldPosition;
