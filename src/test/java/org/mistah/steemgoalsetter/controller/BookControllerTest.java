@@ -8,27 +8,19 @@ import javax.inject.Inject;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mistah.steemgoalsetter.Application;
-import org.mistah.steemgoalsetter.controller.BookController;
 import org.mistah.steemgoalsetter.domain.Book;
 import org.mistah.steemgoalsetter.repository.BookRepository;
 import org.mistah.steemgoalsetter.service.BookService;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
-@IntegrationTest
-@Transactional
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringApplicationConfiguration(classes = Application.class)
+//@WebAppConfiguration
+//@IntegrationTest
+//@Transactional
 public class BookControllerTest {
     private MockMvc mockMvc;
     private static String OBJECTID = "55b13fe48463914e867893c8";
